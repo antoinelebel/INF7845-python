@@ -1,19 +1,19 @@
 #-*- coding: utf-8 -*-
 # Creation Date : 2017-01-31
 # Created by : Antoine LeBel
+from .exception import nonConstructionException
 class Transportable():
     TYPE = "ABS"
 
-    def __init__(self, nom, volume, masse):
+    def __init__(self, nom):
         self._nom = nom
         self._masse = None
         self._volume = None
-        self.construire()
 
-    def construire(self):
+    def construire(self, args):
         raise NotImplementedError("Class needs to implement {} :".format(self.__class__.__name__))
 
-    def valide_args(self, args, validations):
+    def valide(self, args, validations):
         return self._valide_args(args, validations) and self._match_type(args, validations)
     def _valide_args(self, args, validations):
         return len(args) == len(validations)
@@ -27,7 +27,7 @@ class Transportable():
 
     def erreur_non_construction(self, msg=None):
         if not msg:
-            msg = "Erreur : Vous ne pouvez pas construire " + self.TYPE + " arguments invalides."
+            msg = "Erreur : Vous ne pouvez pas construire " + self.TYPE + " arguments invalides. Besoin : " + " ".join(map(str, self.CONSTRUCT))
         raise nonConstructionException(msg)
 
     def get_nom(self):

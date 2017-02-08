@@ -1,23 +1,25 @@
 #-- coding: utf-8 --
 # Creation Date : 2017-01-31
 # Created by : Antoine LeBel
+from . import phaser, vaisseau_arme_leger, blaster, vaisseau_arme, transport
+
 class UsineFarstar():
     @staticmethod
     def creer_produit(nom, args):
         type_produit = nom[0:2]
 
         if type_produit == "VT":
-            return Transport(nom, args)
+            return transport.Transport(nom, args)
         if type_produit == "MR":
             return Hybride(nom, args)
         if type_produit == "VC":
-            return VaisseauArmeLeger(nom, args)
+            return vaisseau_arme_leger.VaisseauArmeLeger(nom, args)
         if type_produit == "VL":
-            return VaisseauArmeLourd(nom, args)
+            return vaisseau_arme.VaisseauArme(nom, args)
         if type_produit == "PH":
-            return Phaser(nom, args)
+            return phaser.Phaser(nom, args)
         if type_produit == "BL":
-            return Blaster(nom, args)
+            return blaster.Blaster(nom, args)
         if type_produit == "CT":
             return Conteneur(nom, args)
 

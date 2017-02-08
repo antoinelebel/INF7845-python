@@ -9,7 +9,7 @@ class Soute():
         self._parent = parent
         self.element_charges = []
         #TODO get DB manager
-        
+
     def get_capacite_masse(self):
         return cap_masse
 
