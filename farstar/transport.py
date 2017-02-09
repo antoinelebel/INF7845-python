@@ -24,22 +24,25 @@ class Transport(transportable.Transportable):
         self.soute = soute.Soute(volume_soute, masse_soute, self)
 
     def get_masse(self):
-        return super.get_masse() + self.soute.get_masse_courante()
+        return transportable.Transportable.get_masse(self) + self.soute.get_masse_courante()
 
     def get_volume(self):
-        return super.get_volume() + self.soute.get_capacite_volume()
+        return transportable.Transportable.get_volume(self) + self.soute.get_capacite_volume()
 
     def get_volume_restant_soute(self):
         return self.soute.get_volume_restant()
+
+    def get_element_soute(self):
+        return self.soute.element_charges
 
     def charger(self, element):
         self.soute.charger(element)
 
     def decharger(self, nom_element):
-        return self.soute.decharger(nom_element)
+        self.soute.decharger(nom_element)
 
     def localiser(self, element):
         return self.soute.localiser(element)
 
     def __str__(self):
-        pass
+         return "Masse : " + str(self.get_masse())

@@ -5,3 +5,5 @@
 - pas besoin de *args, le tableau peut être mixte en python
 
 - Seules les contraintes spécifiées dans les demandes sont validées (phaser/blaster).
+
+- Pas de singleton en python

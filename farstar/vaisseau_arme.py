@@ -37,7 +37,7 @@ class VaisseauArme(transportable.Transportable):
 
         if nom_arme in liste_arme_nom:
             idx = liste_arme_nom.index(nom_arme)
-            self.arme_equipe.remove(self.arme_equipe.index(idx))
+            del(self.arme_equipe[idx])
 
     def get_masse(self):
         masse_arme = 0
@@ -45,7 +45,7 @@ class VaisseauArme(transportable.Transportable):
         for arme in self.arme_equipe:
             masse_arme = masse_arme + arme.get_masse()
 
-        return self.get_masse() + masse_arme
+        return self._masse + masse_arme
 
     def get_volume(self):
         volume_arme = 0
@@ -53,7 +53,7 @@ class VaisseauArme(transportable.Transportable):
         for arme in self.arme_equipe:
             volume_arme = volume_arme + arme.get_volume()
 
-        return self.get_volume() + volume_arme
+        return self._volume + volume_arme
 
     def __str__(self):
         msg = transportable.Transportable.__str__()
