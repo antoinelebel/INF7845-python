@@ -28,7 +28,11 @@ class Hybride(transport.Transport, vaisseau_arme.VaisseauArme):
         return vaisseau_arme.VaisseauArme.get_volume(self) + self.soute.get_capacite_volume()
 
     def localiser(self, element):
-        pass
+        trouver = vaisseau_arme.VaisseauArme.localiser(self, element)
+        if trouver:
+            return trouver
+        else:
+            return self.soute.localiser(element)
 
     def __str__(self):
         msg = vaisseau_arme.VaisseauArme.__str__(self)

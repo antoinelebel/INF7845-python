@@ -60,12 +60,14 @@ class Soute():
 
     def localiser(self, produit):
         for element in self.element_charges:
-            if produit.get_nom() == element:
-                return self
+            if produit == element:
+                #cas de base 1
+                return self._parent
 
             resultat = self._localiser_profondeur(element, produit)
 
             if resultat:
+                #cas de base 2
                 return resultat
 
         return None

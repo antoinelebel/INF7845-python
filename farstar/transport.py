@@ -41,7 +41,7 @@ class Transport(transportable.Transportable):
     def _decharger(self, nom_element):
         self.soute.decharger(nom_element)
 
-    def _localiser(self, element):
+    def localiser(self, element):
         return self.soute.localiser(element)
 
     def peut_charger(self, element):

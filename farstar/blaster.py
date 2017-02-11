@@ -29,3 +29,13 @@ class Blaster(transportable.Transportable):
         self._capacite_gaz = capacite_gaz
         self._gaz_courant = gaz_courant
 
+    def _remplir(self):
+        self._gaz_courant = self._capacite_gaz
+
+    def get_taux_rempli(self):
+        return (self._gaz_courant / self._capacite_gaz) * 100
+
+    def __str__(self):
+        msg = transportable.Transportable.__str__(self)
+        msg += "Remplit a " + str(self.get_taux_rempli()) + "%"
+        return msg + "\n"

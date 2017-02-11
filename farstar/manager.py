@@ -1,6 +1,9 @@
 #-*- coding: utf-8 -*-
 # Creation Date : 2017-02-08
 # Created by : Antoine LeBel
+from .transport import Transport
+from .vaisseau_arme import VaisseauArme
+
 class Manager():
 
     def __init__(self):
@@ -34,5 +37,10 @@ class Manager():
         return True
 
     def get_liste_vaisseau(self):
-        pass
+        liste_vaisseau = []
 
+        for element in self.produit_cree:
+            if isinstance(self.produit_cree[element], Transport) or isinstance(self.produit_cree[element], VaisseauArme):
+                liste_vaisseau.append(self.produit_cree[element])
+
+        return liste_vaisseau

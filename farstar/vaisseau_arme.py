@@ -21,8 +21,8 @@ class VaisseauArme(transportable.Transportable):
         else:
             self.erreur_non_construction()
 
-    def localiser(self, nom_arme):
-        if nom_arme in self.arme_equipe:
+    def localiser(self, arme):
+        if arme in self.arme_equipe:
             return self
 
     def peut_equiper(self, arme):
@@ -33,11 +33,11 @@ class VaisseauArme(transportable.Transportable):
             self.arme_equipe.append(arme)
 
     def desequiper(self, arme):
-        liste_arme_nom = [a.get_nom() for a in self.arme_equipe]
-
-        if arme.get_nom() in liste_arme_nom:
-            idx = liste_arme_nom.index(arme.get_nom())
-            del(self.arme_equipe[idx - 1])
+        if arme in self.arme_equipe:
+            idx = self.arme_equipe.index(arme)
+            del(self.arme_equipe[idx])
+        else:
+            print("Error : L'arme n'existe pas.")
 
     def get_masse(self):
         masse_arme = 0

@@ -46,9 +46,22 @@ class Farstart():
         vaisseau.desequiper(nom_arme)
         self.manager.retirer_produit_placer(nom_arme)
 
-    def localiser(self, nom_produit):
-        pass
+    def localiser(self, produit):
+        liste_vaisseau = self.manager.get_liste_vaisseau()
 
-    def remplir_blaster(self, nom_blaster):
-        blaster = self.manager.produit_cree[nom_blaster]
-        print("TODO remplir" + blaster)
+        for vaisseau in liste_vaisseau:
+            trouver = vaisseau.localiser(produit)
+
+            if trouver:
+                print("{} est dans {}.".format(produit.get_nom(), trouver.get_nom()))
+                return trouver
+
+        if produit in self.manager.produit_cree:
+            print("{} est dans l'usine".format(produit.get_nom()))
+            return produit
+
+        print("{} n'existe pas.".format(produit.get_nom()))
+        return None
+
+    def remplir_blaster(self, blaster):
+        blaster._remplir()
