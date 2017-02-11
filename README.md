@@ -7,3 +7,5 @@
 - Seules les contraintes spécifiées dans les demandes sont validées (phaser/blaster).
 
 - Pas de singleton en python
+
+- Chargeable ne sert pu à rien puisque Hybride hérite de Transport

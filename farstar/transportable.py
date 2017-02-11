@@ -40,5 +40,9 @@ class Transportable():
         return self._volume
 
     def __str__(self):
-        return "Caractéristique de " + self.getNom() + "\nType : " + self.TYPE + "\n"
+        msg = "Caractéristique de " + self.get_nom() + "\nType : " + self.TYPE + "\n"
+        msg += "Masse : " + str(self.get_masse())
+        msg += "\nVolume : " + str(self.get_volume())
+        msg += "\n"
+        return msg
 

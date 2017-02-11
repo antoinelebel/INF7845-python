@@ -1,7 +1,7 @@
 #-- coding: utf-8 --
 # Creation Date : 2017-01-31
 # Created by : Antoine LeBel
-from . import phaser, vaisseau_arme_leger, blaster, vaisseau_arme, transport
+from . import phaser, vaisseau_arme_leger, blaster, vaisseau_arme, transport, conteneur, hybride
 
 class UsineFarstar():
     @staticmethod
@@ -11,7 +11,7 @@ class UsineFarstar():
         if type_produit == "VT":
             return transport.Transport(nom, args)
         if type_produit == "MR":
-            return Hybride(nom, args)
+            return hybride.Hybride(nom, args)
         if type_produit == "VC":
             return vaisseau_arme_leger.VaisseauArmeLeger(nom, args)
         if type_produit == "VL":
@@ -21,6 +21,6 @@ class UsineFarstar():
         if type_produit == "BL":
             return blaster.Blaster(nom, args)
         if type_produit == "CT":
-            return Conteneur(nom, args)
+            return conteneur.Conteneur(nom, args)
 
         raise nonConstructionException("Ce type de produit n'existe pas.")

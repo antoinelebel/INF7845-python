@@ -8,13 +8,19 @@ class Manager():
         self.produit_place = {}
 
     def ajouter_produit(self, produit):
-        self.produit_cree[produit.get_nom()] = produit
+        if produit.get_nom() not in self.produit_cree:
+            self.produit_cree[produit.get_nom()] = produit
+        else:
+            print("Erreur : {} est déjà créé".format(produit.get_nom()))
 
     def ajouter_produit_placer(self, produit):
-        self.produit_place[produit.get_nom()] = produit
+        if produit.get_nom() not in self.produit_place:
+            self.produit_place[produit.get_nom()] = produit
+        else:
+            print("Erreur : {} est déjà placé.".format(produit.get_nom()))
 
-    def retirer_produit_placer(self, nom_produit):
-        self.produit_place.pop(nom_produit)
+    def retirer_produit_placer(self, produit):
+        self.produit_place.pop(produit.get_nom())
 
     def is_produit_disponible(self, produit):
         if produit.get_nom() not in self.produit_cree:

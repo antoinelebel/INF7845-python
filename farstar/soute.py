@@ -3,12 +3,11 @@
 # Created by : Antoine LeBel
 class Soute():
 
-    def __init__(self, cap_masse, cap_volume, parent):
-        self.cap_masse = cap_masse
+    def __init__(self, cap_volume, cap_masse, parent):
         self.cap_volume = cap_volume
+        self.cap_masse = cap_masse
         self._parent = parent
         self.element_charges = []
-        #TODO get DB manager
 
     def get_capacite_masse(self):
         return self.cap_masse
@@ -25,12 +24,12 @@ class Soute():
         return charge
 
     def get_volume_restant(self):
-        volume = self.get_capacite_volume()
+        volume = 0
 
         for elem in self.element_charges:
-            volume = volume - elem.get_volume()
+            volume = volume + elem.get_volume()
 
-        return volume
+        return self.cap_volume - volume
 
     def peut_charger(self, produit):
         masse_potentielle = self.get_masse_courante() + produit.get_masse()
@@ -49,6 +48,8 @@ class Soute():
     def charger(self, produit):
         if self.peut_charger(produit):
             self.element_charges.append(produit)
+        else:
+            print("Erreur : Impossible de charger.")
 
     def decharger(self, nom_produit):
         if nom_produit in self._get_liste_nom_produit():
@@ -57,8 +58,25 @@ class Soute():
         else:
             print("Erreur : Impossible de décharger.")
 
-    def localiser(self, nom_produit):
-        pass
+    def localiser(self, produit):
+        for element in self.element_charges:
+            if produit.get_nom() == element:
+                return self
+
+            resultat = self._localiser_profondeur(element, produit)
+
+            if resultat:
+                return resultat
+
+        return None
+
+    def _localiser_profondeur(self, vaisseau, produit):
+        try:
+            #Doit être un vaisseau pour posséder localiser
+            return vaisseau.localiser(produit)
+        except:
+            #Le produit n'est pas disponible, ce n'est pas un vaisseau
+            return None
 
     def _get_liste_nom_produit(self):
         return [p.get_nom() for p in self.element_charges]

@@ -25,14 +25,14 @@ class Farstart():
         return True
 
     def charger(self, vaisseau, produit):
-        if self.manager.is_produit_disponible(arme) and vaisseau.peut_charger(produit):
-            vaisseau.charger(produit)
+        if self.manager.is_produit_disponible(produit) and vaisseau.peut_charger(produit):
+            vaisseau._charger(produit)
             self.manager.ajouter_produit_placer(produit)
         else:
             print("Vous ne pouvez pas charger " + produit.get_nom() + " sur " + vaisseau.get_nom())
 
     def decharger(self, vaisseau, nom_produit):
-        vaisseau.decharger(nom_produit)
+        vaisseau._decharger(nom_produit)
         self.manager.retirer_produit_placer(nom_produit)
 
     def equiper(self, vaisseau, arme):
@@ -50,4 +50,5 @@ class Farstart():
         pass
 
     def remplir_blaster(self, nom_blaster):
-        pass
+        blaster = self.manager.produit_cree[nom_blaster]
+        print("TODO remplir" + blaster)

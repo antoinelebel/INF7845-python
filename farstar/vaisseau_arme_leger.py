@@ -18,6 +18,7 @@ class VaisseauArmeLeger(vaisseau_arme.VaisseauArme):
 
     def peut_equiper(self, arme):
         result = super(VaisseauArmeLeger, self).peut_equiper(arme)
+
         if result and isinstance(arme, Phaser):
             return True
         else:
