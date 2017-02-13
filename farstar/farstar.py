@@ -4,7 +4,7 @@
 from . import phaser, vaisseau_arme_leger, usine_farstar, manager
 import re
 
-class Farstart():
+class Farstar():
 
     def __init__(self):
         self.manager = manager.Manager()

@@ -3,7 +3,7 @@
 # Created by : Antoine LeBel
 from farstar import farstar
 
-FA = farstar.Farstart()
+FA = farstar.Farstar()
 vaisseau_arme_leger1 = FA.creer("VC-1", [10, 50, 2])
 phaser1 = FA.creer("PH-1", [1, 1])
 phaser2 = FA.creer("PH-2", [1, 1])
